@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stock/widges/common/TextField.dart';
+import 'package:stock/widges/loss.dart';
+import 'package:stock/widges/profit_loss.dart';
 
 class HomeFlotingBotton extends StatelessWidget {
    HomeFlotingBotton({super.key});
@@ -32,9 +34,19 @@ final TextEditingController Email = TextEditingController();
                   alignment: Alignment.topLeft,
                   child: Text("Select a Type",style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),)),
                   SizedBox(height: 10.h,),
-               _customcard( color: Colors.green,icon: Icons.face, title: 'Profit', onTap: () {}),
+               _customcard( color: Colors.green,icon: Icons.face, title: 'Profit', onTap: () {
+                   showModalBottomSheet(
+                context: context,
+                builder: (context) => ProfitLoss(),
+              );
+               }),
                SizedBox(height: 10.h,),
-               _customcard(color:Colors.red,icon: Icons.downhill_skiing, title: 'Loss', onTap: () {}),
+               _customcard(color:Colors.red,icon: Icons.downhill_skiing, title: 'Loss', onTap: () {
+                     showModalBottomSheet(
+                context: context,
+                builder: (context) => Loss(),
+              );
+               }),
               ],
             ),
           ),
